@@ -1,0 +1,20 @@
+<h1><%= @restaurant.name %></h1>
+<h2>Info</h2>
+<ul>
+  <li><%= @restaurant.address %></li>
+  <li><%= @restaurant.phone_number  %></li>
+  <li><%= @restaurant.category %></li>
+</ul>
+<h2>Reviews</h2>
+<ul class="list-group list-group-numbered">
+  <% @restaurant.reviews.each do |n| %>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold"><%= n.content %></div>
+      </div>
+      <span class="badge bg-primary rounded-pill"><%= n.rating %></span>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Back to list", restaurants_path %>
+<%= link_to "Give this restaurant a review", new_restaurant_review_path(@restaurant) %>
